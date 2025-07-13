@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>User Profile</title>
+    <style>
+      .profile {
+        display: flex;
+        align-items: center;
+      }
+      .profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+      .profile-details {
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User Profile</h1>
+    <div class="profile">
+      <img
+        src="<%= user.image %>"
+        alt="Profile Image"
+        class="profile-image"
+      />
+    </div>
+    <p><strong>Name:</strong> <%= user.name %></p>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <p><strong>Created At:</strong> <%= new Date(user.createdAt).toLocaleDateString("en-IN", {year: "numeric", month: "2-digit", day: "2-digit"}) %></p>
+    <p><strong>Updated At:</strong> <%= new Date(user.updatedAt).toLocaleDateString("en-IN", {year: "numeric", month: "2-digit", day: "2-digit"}) %></p>
+    <h2>Tasks:</h2>
+    <ul>
+      <% user.task.forEach(function(task) { %>
+      <li>
+        <strong>Title:</strong> <%= task.title %><br />
+        <strong>Due Date:</strong> <%= new Date(task.due_date).toLocaleDateString("en-IN", {year: 
+"numeric", month: "2-digit", day: "2-digit"}) %><br />
+        <strong>Created At:</strong> <%= new Date(task.createdAt).toLocaleDateString("en-IN", {year: 
+"numeric", month: "2-digit", day: "2-digit"}) %><br />
+        <strong>Updated At:</strong> <%= new Date(task.updatedAt).toLocaleDateString("en-IN", {year: 
+"numeric", month: "2-digit", day: "2-digit"}) %><br />
+      </li>
+      <br />
+      <% }); %>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+# Ignore Node.js build artifacts
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Ignore logs and runtime data
+logs
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files
+# .env
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore JetBrains IDE settings
+.idea/
+
+# Ignore compiled output
+dist/
+build/
+
+/task.postman_collection.json
+# Ignore backup files created by editors
+*~
