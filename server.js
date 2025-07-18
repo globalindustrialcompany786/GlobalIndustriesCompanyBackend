@@ -1,6 +1,3 @@
-const fs = require("fs");
-const https = require("https");
-const path1 = require('path');
 const connect = require("./config/database");
 const env = require("dotenv");
 const app = require("./app");
@@ -18,18 +15,10 @@ env.config({
 
 connect();
 
-// Create an HTTPS server using the SSL options
-const server = https.createServer(
-  {
-    key: fs.readFileSync(path1.join(__dirname, 'ssl', 'api.globalindustriescompany.private.key')),
-    cert: fs.readFileSync(path1.join(__dirname, 'ssl', 'api.globalindustriescompany.certificate.crt')),
-    ca: fs.readFileSync(path1.join(__dirname, 'ssl', 'api.globalindustriescompany.ca_bundle.crt'))
-  },
-  app
-);
+// Use Render's dynamic port or fallback to 10000 locally
+const PORT = process.env.PORT || 10000;
+const HOST = '0.0.0.0';
 
-// Set up the server to listen on the determined port (use a default if not provided)
-const PORT = process.env.PORT || 443;
-server.listen(PORT, () => {
-  console.log(`Server is running on https://localhost:${PORT} ✅`);
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running on http://${HOST}:${PORT} ✅`);
 });
